@@ -4,6 +4,111 @@
 
 ---
 
+## 💻 PANDUAN LENGKAP UNTUK PENGGUNA WINDOWS (AWAM / PEMULA)
+
+Bagi Anda yang menggunakan komputer/laptop sistem operasi Windows dan ingin menjalankan aplikasi ini di laptop sendiri tanpa pengalaman coding, ikuti langkah-langkah praktis berikut secara berurutan:
+
+---
+
+### 📥 Langkah 1: Download & Install Python di Windows
+
+1. Buka browser (Google Chrome / Edge) dan kunjungi situs resmi Python: **[https://www.python.org/downloads/](https://www.python.org/downloads/)**
+2. Klik tombol **"Download Python 3.12"** (atau versi 3.10 ke atas).
+3. Buka file installer `.exe` yang sudah di-download.
+4. ⚠️ **SANGAT PENTING**: Sebelum mengklik "Install Now", **Centang/Checklist** opsi **"Add python.exe to PATH"** di bagian paling bawah installer!
+5. Klik **"Install Now"** lalu tunggu hingga muncul tulisan *Setup was successful*, kemudian klik **Close**.
+
+---
+
+### 💻 Langkah 2: Download Project dari GitHub
+
+**Pilihan A (Tanpa Git - Paling Mudah):**
+1. Masuk ke halaman utama repositori ini di browser.
+2. Klik tombol hijau **`Code`** di kanan atas.
+3. Pilih **`Download ZIP`**.
+4. Setelah ter-download, **Extract** file `.zip` tersebut ke folder yang mudah diakses, contohnya di `C:\kalenderia.my.id`.
+
+**Pilihan B (Menggunakan Git):**
+Buka **Command Prompt (CMD)** atau **PowerShell**, lalu ketik:
+```cmd
+git clone https://github.com/4ntiDandruff/kalenderia.my.id.git
+cd kalenderia.my.id
+```
+
+---
+
+### ⚡ Langkah 3: Menjalankan Aplikasi di Windows (Metode Otomatis 1-Klik)
+
+Untuk kemudahan pengguna Windows, project ini menyediakan script jalankan otomatis:
+
+1. Buka folder tempat Anda meng-extract project (misalnya folder `kalenderia.my.id`).
+2. Cari file bernama **`run_windows.bat`**.
+3. **Klik 2x (Double-click)** pada file `run_windows.bat` tersebut.
+4. Script akan otomatis:
+   - Membuat Virtual Environment Python (`venv`)
+   - Memasang seluruh dependensi pustaka yang dibutuhkan (`Flask`, `Pillow`, dll.)
+   - Membuat file database lokal (`kalenderia.db`)
+   - Meng-generate seluruh gambar sampel kalender fisik (`static/images/real/`)
+   - Menjalankan server aplikasi web di komputer Anda!
+5. Buka Google Chrome/Edge dan ketik alamat: **`http://localhost:5005`** atau **`http://127.0.0.1:5005`**.
+
+---
+
+### 🛠️ Langkah 4: Menjalankan Manual via Command Prompt (CMD) di Windows
+
+Jika Anda lebih memilih menjalankan perintah satu per satu lewat CMD Windows:
+
+1. Tekan tombol `Windows + R` di keyboard, ketik **`cmd`**, lalu tekan **Enter**.
+2. Masuk ke folder project dengan mengetik:
+   ```cmd
+   cd C:\kalenderia.my.id
+   ```
+   *(Sesuaikan path folder dengan lokasi tempat Anda menyimpan project)*
+
+3. Buat Virtual Environment Python:
+   ```cmd
+   python -m venv venv
+   ```
+
+4. Aktifkan Virtual Environment di Windows:
+   ```cmd
+   venv\Scripts\activate.bat
+   ```
+   *(Akan muncul tanda `(venv)` di sebelah kiri Command Prompt)*
+
+5. Install seluruh dependensi pustaka:
+   ```cmd
+   pip install -r requirements.txt
+   ```
+
+6. Inisialisasi Database & Generate Gambar Sampel:
+   ```cmd
+   python init_db.py
+   python generate_real_png.py
+   ```
+
+7. Jalankan Server Web:
+   ```cmd
+   python app.py
+   ```
+
+8. Buka browser favorit Anda di alamat: **`http://localhost:5005`**.
+
+---
+
+### ❓ Troubleshooting FAQ (Kendala Umum di Windows)
+
+* **T: Muncul pesan error `'python' is not recognized as an internal or external command`**
+  * **Solusi**: Anda belum mencentang opsi *"Add python.exe to PATH"* saat install Python. Uninstall Python Anda, lalu install ulang dan pastikan centang opsi tersebut di bagian bawah layar pertama installer.
+
+* **T: Muncul error PowerShell Execution Policy saat aktivasi `venv`**
+  * **Solusi**: Gunakan **Command Prompt (CMD)** biasa, bukan PowerShell. Atau jalankan file **`run_windows.bat`** langsung.
+
+* **T: Bagaimana cara menghentikan server aplikasi?**
+  * **Solusi**: Di jendela CMD yang sedang berjalan, tekan tombol **`Ctrl + C`** di keyboard.
+
+---
+
 ## 🛠️ Tech Stack & Ekosistem
 
 - **Backend Framework**: Python 3.10+ / Flask (dengan helper interseptor `is_hx_request()`)
@@ -11,7 +116,7 @@
 - **Frontend Engine**: Jinja2 Templates + HTMX v1.9.10 (Single-Page Experience partial swap)
 - **UI Design System**: Tailwind CSS v4 Standalone (Clean Light Workshop & Emerald Palette `#10b981`)
 - **Asset Mockup Generator**: Python Pillow (PIL) `generate_real_png.py` untuk gambar fisik PNG realistis
-- **Process Manager**: PM2 / Gunicorn (`http://127.0.0.1:5005`)
+- **Process Manager**: PM2 / Gunicorn / Windows Batch Launcher (`http://127.0.0.1:5005`)
 
 ---
 
@@ -41,6 +146,7 @@ kalenderia.my.id/
 ├── app.py                      # Controller utama Flask, routing, & endpoint SQLite/HTMX
 ├── init_db.py                  # Script seeder & struktur SQLite database (kalenderia.db)
 ├── generate_real_png.py        # Generator gambar fisik PNG realistis berbasis PIL
+├── run_windows.bat             # Batch launcher otomatis 1-klik untuk Windows
 ├── requirements.txt            # Dependensi Python project
 ├── .gitignore                  # Berkas pengecualian Git
 ├── README.md                   # Dokumentasi resmi repository
@@ -75,41 +181,6 @@ kalenderia.my.id/
         ├── contact.html        # Kontak WA fast response & jam operasional pabrik
         └── tracking.html       # Lacak status resi & progres produksi pesanan
 ```
-
----
-
-## ⚙️ Cara Menjalankan Project (Local Development)
-
-### 1. Clone Repository & Buat Virtual Environment
-```bash
-git clone https://github.com/hizamnahari/kalenderia.my.id.git
-cd kalenderia.my.id
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 2. Install Dependensi Python
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Inisialisasi Database & Generate Aset Gambar
-```bash
-python3 init_db.py
-python3 generate_real_png.py
-```
-
-### 4. Kompilasi Tailwind CSS (Jika Mengubah input.css atau Template)
-```bash
-# Menggunakan Standalone Tailwind CSS CLI v4
-/tmp/tailwindcss -i static/css/input.css -o static/css/style.css --content "templates/**/*.html" --minify
-```
-
-### 5. Jalankan Application Server
-```bash
-python3 app.py
-```
-Akses di browser pada alamat `http://127.0.0.1:5005` atau `http://localhost:5005`.
 
 ---
 
