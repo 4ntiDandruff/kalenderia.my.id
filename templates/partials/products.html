@@ -1,0 +1,84 @@
+<!-- KATALOG PRODUK CETAK FULLY RESPONSIVE DENGAN BREAKPOINT BERTINGKAT -->
+<div class="space-y-6 md:space-y-8 w-full max-w-full">
+
+  <!-- HEADER KATALOG RESPONSIF -->
+  <div class="bg-white border border-slate-200 rounded-3xl p-4 md:p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div>
+      <h2 class="text-lg md:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+        Katalog Cetak Kalender 2027
+      </h2>
+      <p class="text-xs text-slate-500 mt-1">Pilihan spesifikasi kalender meja eksklusif &amp; kalender dinding langsung dari workshop.</p>
+    </div>
+
+    <!-- TABS FILTER KATEGORI RESPONSIF HIDDEN SCROLLBAR -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <a href="/katalog" 
+         hx-get="/katalog" 
+         hx-target="#main-content" 
+         hx-push-url="true" 
+         class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition active-press {% if not selected_category %}bg-emerald-600 text-white shadow-sm{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">
+        Semua Varian
+      </a>
+      {% for cat in categories %}
+      <a href="/katalog?kategori={{ cat.slug }}" 
+         hx-get="/katalog?kategori={{ cat.slug }}" 
+         hx-target="#main-content" 
+         hx-push-url="true" 
+         class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition active-press {% if selected_category == cat.slug %}bg-emerald-600 text-white shadow-sm{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">
+        {{ cat.name }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- GRID PRODUK RESPONSIF: 1 KOLOM SELULER, 2 TABLET, 3-4 DESKTOP -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 w-full">
+
+    {% for product in products %}
+    <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden card-hover-lift flex flex-col justify-between group">
+      
+      <!-- IMAGE CONTAINER REAL MOCKUP PNG -->
+      <div class="relative bg-slate-100 h-44 sm:h-48 w-full p-4 flex items-center justify-center border-b border-slate-100">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300">
+        <span class="absolute top-3 right-3 bg-slate-900/90 text-emerald-400 text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-sm">
+          MOQ: {{ product.min_order }} Pcs
+        </span>
+      </div>
+
+      <!-- DETAILS CONTAINER -->
+      <div class="p-4 sm:p-5 space-y-3 flex-1 flex flex-col justify-between">
+        <div class="space-y-1.5">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
+            {{ product.category_name if product.category_name else 'Ready Offset' }}
+          </span>
+          <h3 class="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-1">
+            {{ product.name }}
+          </h3>
+          <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+            {{ product.description }}
+          </p>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+          <div>
+            <span class="text-[10px] text-slate-400 block font-medium">Mulai Dari</span>
+            <span class="text-sm font-extrabold text-emerald-600">Rp {{ "{:,.0f}".format(product.price_start).replace(',', '.') }}</span>
+          </div>
+
+          <a href="/produk/{{ product.slug }}" 
+             hx-get="/produk/{{ product.slug }}" 
+             hx-target="#main-content" 
+             hx-push-url="true" 
+             class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs py-2 px-3 rounded-xl transition active-press shrink-0">
+            Detail
+          </a>
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>

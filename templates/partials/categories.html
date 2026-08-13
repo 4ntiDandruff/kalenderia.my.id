@@ -1,0 +1,18 @@
+<!-- KATEGORI GRID RESPONSIF -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
+  {% for cat in categories %}
+  <a href="/katalog?kategori={{ cat.slug }}" 
+     hx-get="/katalog?kategori={{ cat.slug }}" 
+     hx-target="#main-content" 
+     hx-push-url="true" 
+     class="bg-white border border-slate-200 rounded-3xl p-5 md:p-6 card-hover-lift flex items-center gap-4 group">
+    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center font-bold text-xl shrink-0 group-hover:scale-110 transition-transform">
+      📅
+    </div>
+    <div class="space-y-1">
+      <h3 class="font-bold text-slate-900 text-sm group-hover:text-emerald-600 transition-colors">{{ cat.name }}</h3>
+      <p class="text-xs text-slate-500 line-clamp-1">{{ cat.description if cat.description else 'Koleksi varian cetak presisi 2027.' }}</p>
+    </div>
+  </a>
+  {% endfor %}
+</div>

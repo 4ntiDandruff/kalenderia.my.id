@@ -1,0 +1,47 @@
+<!-- BAHAN KERTAS & GRAMASI CETAK DENGAN CARD HOVER LIFT & ACTIVE PRESS -->
+<div class="space-y-8">
+
+  <!-- HEADER BAHAN KERTAS -->
+  <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div>
+      <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        Pilihan Bahan Kertas &amp; Finishing Cetak
+      </h2>
+      <p class="text-xs text-slate-500 mt-1">Panduan lengkap ketebalan kertas &amp; jenis jilid standar industri percetakan.</p>
+    </div>
+  </div>
+
+  <!-- GRID BAHAN KERTAS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    {% for mat in materials %}
+    <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden card-hover-lift flex flex-col justify-between group">
+      
+      <!-- IMAGE CONTAINER REAL MOCKUP PNG -->
+      <div class="relative bg-slate-100 h-48 w-full p-4 flex items-center justify-center border-b border-slate-100">
+        <img src="{{ mat.image_url }}" alt="{{ mat.name }}" class="h-full object-contain transform group-hover:scale-105 transition-transform duration-300">
+        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-sm">
+          {{ mat.paper_weight }}
+        </span>
+      </div>
+
+      <!-- DETAILS CONTAINER -->
+      <div class="p-6 space-y-3">
+        <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+          {{ mat.name }}
+        </h3>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          {{ mat.description }}
+        </p>
+        <div class="bg-slate-50 rounded-2xl p-3 border border-slate-100 text-xs font-semibold text-slate-700">
+          Rekomendasi: {{ mat.recommended_for }}
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>

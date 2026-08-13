@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>{{ page_title if page_title else title if title else "Kalenderia - Percetakan Kalender Sidoarjo 2027" }}</title>
+  <meta name="description" content="Pusat cetak kalender meja eksklusif &amp; dinding Sidoarjo. Kertas tebal, cetak offset presisi 2027, jilid klem seng &amp; wire-o spiral rapi, garansi tepat waktu.">
+
+  <!-- Favicon & Branding Icons dengan Cache-Buster -->
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg?v=2027">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png?v=2027">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png?v=2027">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png?v=2027">
+  <link rel="shortcut icon" href="/static/favicon.ico?v=2027">
+
+  <!-- OpenGraph Meta Tags untuk B2B Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kalenderia.my.id{{ request.path }}">
+  <meta property="og:title" content="Kalenderia - Percetakan Kalender Presisi Sidoarjo 2027">
+  <meta property="og:description" content="Pusat produksi kalender meja eksklusif &amp; dinding Sidoarjo. Kertas tebal, cetak offset presisi, jilid rapi, tepat waktu.">
+  <meta property="og:image" content="/static/images/real/kalender_meja.png">
+  <meta property="og:site_name" content="Kalenderia.my.id">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalenderia - Percetakan Kalender Presisi Sidoarjo 2027">
+  <meta name="twitter:description" content="Spesialis cetak kalender meja &amp; dinding Sidoarjo-Surabaya. WA 0857-0000-0000.">
+  <meta name="twitter:image" content="/static/images/real/kalender_meja.png">
+
+  <!-- HTMX & Tailwind Compiled CSS -->
+  <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/css/style.css">
+  
+  <!-- HTMX Active State Manager & Micro-Interactions Script -->
+  <script src="/static/main.js" defer></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kalenderia.my.id - Percetakan Kalender Sidoarjo",
+    "image": "/static/images/real/kalender_meja.png",
+    "@id": "https://kalenderia.my.id/#localbusiness",
+    "url": "https://kalenderia.my.id",
+    "telephone": "+6285700000000",
+    "priceRange": "Rp 2.500 - Rp 25.000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Raya Candi No. 88",
+      "addressLocality": "Sidoarjo",
+      "addressRegion": "Jawa Timur",
+      "postalCode": "61271",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -7.4722,
+      "longitude": 112.7122
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  }
+  </script>
+</head>
+<body class="h-full bg-slate-50 flex flex-col overflow-x-hidden">
+
+  <!-- TOP MOBILE HEADER (KHUSUS SELULER < lg:) -->
+  <header class="lg:hidden sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 py-3 flex items-center justify-between shadow-xs">
+    <a href="/" hx-get="/" hx-target="#main-content" hx-push-url="true" class="flex items-center gap-2.5 active-press">
+      <div class="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 p-1.5 flex items-center justify-center shrink-0">
+        <img src="/static/favicon.svg?v=2027" alt="Kalenderia Logo" class="w-full h-full object-contain">
+      </div>
+      <div>
+        <span class="font-extrabold text-slate-900 text-base tracking-tight block leading-none">Kalenderia</span>
+        <span class="text-[9px] font-bold text-emerald-600 tracking-wider uppercase block">Workshop Sidoarjo</span>
+      </div>
+    </a>
+
+    <!-- HAMBURGER MENU BUTTON -->
+    <button type="button" 
+            id="mobile-drawer-toggle" 
+            aria-label="Buka Menu Navigasi"
+            class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition active-press focus:outline-none">
+      <svg class="w-6 h-6 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- MAIN WRAPPER CONTAINER: FLEX ROW DI DESKTOP -->
+  <div class="flex-1 flex flex-col lg:flex-row w-full min-w-0 overflow-x-hidden">
+
+    <!-- MOBILE OFF-CANVAS BACKDROP (OVERLAY BLUR) -->
+    <div id="drawer-backdrop" 
+         class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-40 hidden opacity-0 transition-opacity duration-300 lg:hidden">
+    </div>
+
+    <!-- SIDEBAR NAV (OFF-CANVAS DRAWER PADA SELULER < lg:, STICKY PERSISTENT PADA DESKTOP lg:block) -->
+    <div id="sidebar-container" 
+         class="fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-white border-r border-slate-200 -translate-x-full lg:translate-x-0 lg:static lg:w-64 lg:shrink-0 transition-transform duration-300 ease-in-out flex flex-col shadow-2xl lg:shadow-none">
+      
+      <!-- MOBILE DRAWER TOP BAR (HEADER DRAWER SELULER) -->
+      <div class="lg:hidden p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <img src="/static/favicon.svg?v=2027" alt="Logo" class="w-6 h-6">
+          <span class="font-extrabold text-slate-900 text-sm">Menu Navigasi</span>
+        </div>
+        <button type="button" id="mobile-drawer-close" class="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 transition active-press">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- SIDEBAR PARTIAL INCLUSION -->
+      <div class="flex-1 overflow-y-auto">
+        {% include 'partials/sidebar.html' %}
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER (FULL WIDTH RESPONSIVE, ISOLATED OVERFLOW) -->
+    <main id="main-content" class="flex-1 min-w-0 w-full overflow-x-hidden p-4 md:p-6 lg:p-8 animate-fade-in">
+      {% block content %}
+        {% include content_template if content_template else 'partials/home_content.html' %}
+      {% endblock %}
+    </main>
+
+  </div>
+
+</body>
+</html>

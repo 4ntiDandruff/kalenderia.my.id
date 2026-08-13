@@ -1,0 +1,16 @@
+# __pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.env
+
+# SQLite local db
+*.db
+*.sqlite3
+
+# Tailwind output cache (opsional, namun style.css tetap di-commit untuk kemudahan run)
+.tailwindcss/

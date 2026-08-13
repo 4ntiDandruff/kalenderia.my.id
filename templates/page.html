@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  {% if initial_partial == 'products' %}
+    {% include 'partials/products.html' %}
+  {% elif initial_partial == 'product_detail' %}
+    {% include 'partials/product_detail.html' %}
+  {% elif initial_partial == 'promo' %}
+    {% include 'partials/promo.html' %}
+  {% elif initial_partial == 'categories' %}
+    {% include 'partials/categories.html' %}
+  {% elif initial_partial == 'papers' %}
+    {% include 'partials/papers.html' %}
+  {% elif initial_partial == 'templates_list' %}
+    {% include 'partials/templates_list.html' %}
+  {% elif initial_partial == 'portfolio' %}
+    {% include 'partials/portfolio.html' %}
+  {% elif initial_partial == 'about' %}
+    {% include 'partials/about.html' %}
+  {% elif initial_partial == 'contact' %}
+    {% include 'partials/contact.html' %}
+  {% elif initial_partial == 'tracking' %}
+    {% include 'partials/tracking.html' %}
+  {% else %}
+    {% include 'index.html' %}
+  {% endif %}
+{% endblock %}

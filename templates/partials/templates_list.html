@@ -1,0 +1,85 @@
+<!-- GALERI TEMPLATE READY CETAK UNIK DENGAN CARD HOVER LIFT & ACTIVE PRESS -->
+<div class="space-y-8">
+
+  <!-- HEADER TEMPLATE RESPONSIF & FILTER TAB TANPA SCROLLBAR KUSAM -->
+  <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div>
+      <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Galeri Template Ready Cetak 2027
+      </h2>
+      <p class="text-xs text-slate-500 mt-1">Pilih desain dasar, kami bantu ganti logo, warna instansi, &amp; foto tanpa biaya desain.</p>
+    </div>
+
+    <!-- TABS FILTER TEMA HIDDEN SCROLLBAR & ACTIVE PRESS -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <a href="/template-desain" 
+         hx-get="/template-desain" 
+         hx-target="#main-content" 
+         hx-push-url="true" 
+         class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition active-press {% if not selected_theme %}bg-emerald-600 text-white shadow-sm{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">
+        Semua Tema
+      </a>
+      <a href="/template-desain?tema=Tema+Corporate+%26+BUMN" 
+         hx-get="/template-desain?tema=Tema+Corporate+%26+BUMN" 
+         hx-target="#main-content" 
+         hx-push-url="true" 
+         class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition active-press {% if selected_theme == 'Tema Corporate & BUMN' %}bg-emerald-600 text-white shadow-sm{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">
+        Corporate &amp; BUMN
+      </a>
+      <a href="/template-desain?tema=Tema+Islami+%26+Masjid" 
+         hx-get="/template-desain?tema=Tema+Islami+%26+Masjid" 
+         hx-target="#main-content" 
+         hx-push-url="true" 
+         class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition active-press {% if selected_theme == 'Tema Islami & Masjid' %}bg-emerald-600 text-white shadow-sm{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">
+        Islami &amp; Masjid
+      </a>
+      <a href="/template-desain?tema=Tema+Sekolah+%26+Yayasan" 
+         hx-get="/template-desain?tema=Tema+Sekolah+%26+Yayasan" 
+         hx-target="#main-content" 
+         hx-push-url="true" 
+         class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition active-press {% if selected_theme == 'Tema Sekolah & Yayasan' %}bg-emerald-600 text-white shadow-sm{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">
+        Sekolah &amp; Yayasan
+      </a>
+    </div>
+  </div>
+
+  <!-- GRID GALERI TEMPLATE -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    {% for item in templates %}
+    <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden card-hover-lift flex flex-col justify-between group">
+      
+      <!-- IMAGE CONTAINER REAL PNG MOCKUP -->
+      <div class="relative bg-slate-100 h-52 w-full p-4 flex items-center justify-center overflow-hidden border-b border-slate-100">
+        <img src="{{ item.image_url }}" alt="{{ item.title }}" class="h-full object-contain transform group-hover:scale-105 transition-transform duration-300">
+        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-sm">
+          {{ item.theme_tag }}
+        </span>
+      </div>
+
+      <!-- DETAILS CONTAINER -->
+      <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+        <div class="space-y-2">
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-1">
+            {{ item.title }}
+          </h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Layout siap pakai edisi 2027. Termasuk kalender Hijriyah, Jawa pasaran, &amp; hari libur nasional resmi.
+          </p>
+        </div>
+
+        <a href="https://wa.me/6285700000000?text=Halo%20Admin%20Kalenderia,%20saya%20tertarik%20pakai%20{{ item.title }}" 
+           target="_blank" 
+           class="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 px-4 rounded-xl transition active-press shadow-sm">
+          <span>Gunakan Template Ini (Free Setting Logo &amp; Foto)</span>
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.143 4.174 4.286-1.123z"/></svg>
+        </a>
+      </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>

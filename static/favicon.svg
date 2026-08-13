@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Rounded Box Background (Megapass Spec: Charcoal/Ink background for sharp tab contrast) -->
+  <rect x="16" y="16" width="480" height="480" rx="96" ry="96" fill="#0B1220" stroke="#0D9488" stroke-width="12"/>
+  
+  <!-- Outer Subtle Cyan Glow Border -->
+  <rect x="28" y="28" width="456" height="456" rx="84" ry="84" fill="none" stroke="#14B8A6" stroke-width="4" stroke-opacity="0.4"/>
+
+  <!-- Calendar Body / Grid Base -->
+  <rect x="112" y="128" width="288" height="264" rx="28" ry="28" fill="#F8FAFC"/>
+  
+  <!-- Calendar Header Bar (Teal Accent) -->
+  <path d="M 112 156 C 112 140.536 124.536 128 140 128 L 372 128 C 387.464 128 400 140.536 400 156 L 400 200 L 112 200 Z" fill="#0D9488"/>
+  
+  <!-- Binding Rings (Spiral Rings at Top) -->
+  <rect x="176" y="96" width="24" height="48" rx="12" fill="#38BDF8"/>
+  <rect x="244" y="96" width="24" height="48" rx="12" fill="#38BDF8"/>
+  <rect x="312" y="96" width="24" height="48" rx="12" fill="#38BDF8"/>
+
+  <!-- Letter 'K' (Bold Stylized Brand Mark inside Grid Area) -->
+  <!-- Left Vertical Stem of K -->
+  <rect x="156" y="232" width="36" height="120" rx="8" fill="#0B1220"/>
+  
+  <!-- Top Diagonal Arm of K -->
+  <path d="M 276 232 L 208 288 L 244 288 L 308 232 Z" fill="#0D9488"/>
+  <path d="M 192 276 L 288 232 L 316 232 L 216 296 Z" fill="#0D9488"/>
+  
+  <!-- Bottom Diagonal Leg of K -->
+  <path d="M 204 280 L 312 352 L 276 352 L 180 288 Z" fill="#14B8A6"/>
+
+  <!-- Small Accent Dot (Star / Date Marker) -->
+  <circle cx="340" cy="336" r="16" fill="#F59E0B"/>
+</svg>

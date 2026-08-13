@@ -1,0 +1,69 @@
+<!-- LACAK RESI & STATUS PRODUKSI PESANAN -->
+<div class="max-w-2xl mx-auto space-y-8">
+
+  <!-- HEADER TRACKING -->
+  <div class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm text-center space-y-3">
+    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto font-bold text-lg">
+      🔍
+    </div>
+    <h2 class="text-xl font-bold text-slate-900 tracking-tight">Lacak Status Resi &amp; Produksi Pesanan</h2>
+    <p class="text-xs text-slate-500 max-w-md mx-auto">
+      Masukkan nomor resi atau nomor order invoice Anda untuk melihat posisi proses cetak offset, jilid, &amp; pengiriman.
+    </p>
+
+    <!-- FORM PENCARIAN RESI WITH ACTIVE PRESS BUTTON -->
+    <form action="/cek-resi" method="GET" hx-get="/cek-resi" hx-target="#main-content" hx-push-url="true" class="flex items-center gap-2 pt-2">
+      <input type="text" name="resi" value="{{ resi_query if resi_query else '' }}" placeholder="Contoh: KLD-2027-001" required
+             class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 font-semibold focus:outline-none focus:border-emerald-600 focus:bg-white transition">
+      <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 px-5 rounded-xl transition active-press shadow-sm">
+        Cek Resi
+      </button>
+    </form>
+  </div>
+
+  {% if searched %}
+    {% if result %}
+    <!-- RESULT CARD DETAILED -->
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4 card-hover-lift">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div>
+          <span class="text-[10px] text-slate-400 font-semibold uppercase block">Nomor Order Invoice</span>
+          <span class="text-base font-extrabold text-slate-900">{{ result.order_number }}</span>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          {{ result.status }}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 text-xs text-slate-700">
+        <div>
+          <span class="text-[10px] text-slate-400 uppercase font-semibold block">Pemesan/Instansi</span>
+          <span class="font-bold text-slate-900">{{ result.customer_name }}</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 uppercase font-semibold block">Jenis Kalender</span>
+          <span class="font-bold text-slate-900">{{ result.product_name }}</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 uppercase font-semibold block">Jumlah Order</span>
+          <span class="font-bold text-slate-900">{{ result.quantity }} Pcs</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-slate-400 uppercase font-semibold block">Nomor Resi / Kurir</span>
+          <span class="font-bold text-slate-900">{{ result.resi_number if result.resi_number else 'Pickup Workshop' }}</span>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <!-- NOT FOUND STATE -->
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 text-center space-y-3 shadow-sm">
+      <p class="text-xs text-slate-500 font-medium">Nomor resi atau order <strong class="text-slate-900">"{{ resi_query }}"</strong> tidak ditemukan.</p>
+      <a href="https://wa.me/6285700000000?text=Halo%20Admin%20Kalenderia,%20saya%20mau%20tanya%20status%20order%20{{ resi_query }}" 
+         target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 active-press">
+        Tanyakan Langsung ke Admin WA →
+      </a>
+    </div>
+    {% endif %}
+  {% endif %}
+
+</div>

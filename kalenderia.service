@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve Kalenderia.my.id Website
+After=network.target
+
+[Service]
+User=michael
+Group=michael
+WorkingDirectory=/home/michael/kalenderia.my.id
+ExecStart=/usr/bin/python3 -m gunicorn --config gunicorn_config.py app:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
