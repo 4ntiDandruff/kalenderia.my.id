@@ -4,108 +4,96 @@
 
 ---
 
-## 💻 PANDUAN LENGKAP UNTUK PENGGUNA WINDOWS (AWAM / PEMULA)
+## 🖥️ PANDUAN LENGKAP PENGGUNA WINDOWS (SANGAT AWAM & PEMULA)
 
-Bagi Anda yang menggunakan komputer/laptop sistem operasi Windows dan ingin menjalankan aplikasi ini di laptop sendiri tanpa pengalaman coding, ikuti langkah-langkah praktis berikut secara berurutan:
-
----
-
-### 📥 Langkah 1: Download & Install Python di Windows
-
-1. Buka browser (Google Chrome / Edge) dan kunjungi situs resmi Python: **[https://www.python.org/downloads/](https://www.python.org/downloads/)**
-2. Klik tombol **"Download Python 3.12"** (atau versi 3.10 ke atas).
-3. Buka file installer `.exe` yang sudah di-download.
-4. ⚠️ **SANGAT PENTING**: Sebelum mengklik "Install Now", **Centang/Checklist** opsi **"Add python.exe to PATH"** di bagian paling bawah installer!
-5. Klik **"Install Now"** lalu tunggu hingga muncul tulisan *Setup was successful*, kemudian klik **Close**.
+Bagi Anda pengguna Windows (Windows 10 / Windows 11) yang belum pernah coding atau belum pernah menggunakan Command Line, gunakan panduan langkah-demi-langkah super simpel di bawah ini:
 
 ---
 
-### 💻 Langkah 2: Download Project dari GitHub
+### 📥 Langkah 1: Download & Install Python (Wajib Centang PATH)
 
-**Pilihan A (Tanpa Git - Paling Mudah):**
-1. Masuk ke halaman utama repositori ini di browser.
-2. Klik tombol hijau **`Code`** di kanan atas.
-3. Pilih **`Download ZIP`**.
-4. Setelah ter-download, **Extract** file `.zip` tersebut ke folder yang mudah diakses, contohnya di `C:\kalenderia.my.id`.
-
-**Pilihan B (Menggunakan Git):**
-Buka **Command Prompt (CMD)** atau **PowerShell**, lalu ketik:
-```cmd
-git clone https://github.com/4ntiDandruff/kalenderia.my.id.git
-cd kalenderia.my.id
-```
+1. Buka Google Chrome / Microsoft Edge, masuk ke halaman resmi: **[https://www.python.org/downloads/](https://www.python.org/downloads/)**
+2. Klik tombol kuning **"Download Python 3.12"** (atau versi terbaru).
+3. Buka file **`python-3.12.x-amd64.exe`** di folder Downloads Anda.
+4. ⚠️ **LANGKAH PALING KRUSIAL**:
+   - Di bagian bawah jendela installer pertama, **CENTANG / CHECKLIST** kotak tulisan:
+     `[✓] Add python.exe to PATH`
+5. Setelah dicentang, klik tombol **"Install Now"** di bagian atas.
+6. Tunggu proses instalasi selesai sampai muncul teks *Setup was successful*, lalu klik **Close**.
 
 ---
 
-### ⚡ Langkah 3: Menjalankan Aplikasi di Windows (Metode Otomatis 1-Klik)
+### 📦 Langkah 2: Download Project dari GitHub
 
-Untuk kemudahan pengguna Windows, project ini menyediakan script jalankan otomatis:
+#### Cara Paling Mudah (Tanpa Install Git):
+1. Buka halaman GitHub project ini: **[https://github.com/4ntiDandruff/kalenderia.my.id](https://github.com/4ntiDandruff/kalenderia.my.id)**
+2. Klik tombol hijau tulisan **`<> Code`** di sebelah kanan atas.
+3. Klik opsi **`Download ZIP`**.
+4. Buka folder Downloads Anda, klik kanan file **`kalenderia.my.id-main.zip`**, lalu pilih **Extract All...** (Ekstrak Semua).
+5. Simpan di lokasi yang mudah ditemukan, misalnya di **`C:\kalenderia.my.id`** atau di **`Desktop`**.
 
-1. Buka folder tempat Anda meng-extract project (misalnya folder `kalenderia.my.id`).
-2. Cari file bernama **`run_windows.bat`**.
+---
+
+### 🚀 Langkah 3: Menjalankan Aplikasi di Windows (Metode 1-Klik Otomatis)
+
+Project ini sudah dilengkapi file script otomatis bernama **`run_windows.bat`**. Anda tidak perlu mengetik perintah apapun!
+
+1. Buka folder hasil ekstrak project tadi (folder yang berisi file `app.py`, `README.md`, dll).
+2. Cari file bernama **`run_windows.bat`** (berikon gerigi/batch file).
 3. **Klik 2x (Double-click)** pada file `run_windows.bat` tersebut.
-4. Script akan otomatis:
-   - Membuat Virtual Environment Python (`venv`)
-   - Memasang seluruh dependensi pustaka yang dibutuhkan (`Flask`, `Pillow`, dll.)
-   - Membuat file database lokal (`kalenderia.db`)
-   - Meng-generate seluruh gambar sampel kalender fisik (`static/images/real/`)
-   - Menjalankan server aplikasi web di komputer Anda!
-5. Buka Google Chrome/Edge dan ketik alamat: **`http://localhost:5005`** atau **`http://127.0.0.1:5005`**.
+4. Jendela Command Prompt hitam akan terbuka dan secara otomatis melakukan:
+   - Setup Virtual Environment (`venv`)
+   - Menginstall Flask & modul gambar Pillow secara otomatis
+   - Mengisi database awal (`kalenderia.db`)
+   - Meng-generate seluruh gambar produk PNG realistis di folder `static/images/real/`
+   - Menjalankan server aplikasi lokal.
+5. Setelah muncul tulisan `Running on http://127.0.0.1:5005`, buka browser (Chrome / Edge) lalu masuk ke alamat:
+   👉 **`http://localhost:5005`** atau **`http://127.0.0.1:5005`**
 
 ---
 
-### 🛠️ Langkah 4: Menjalankan Manual via Command Prompt (CMD) di Windows
+### 💻 Langkah 4: Cara Menjalankan Manual via Command Prompt (CMD)
 
-Jika Anda lebih memilih menjalankan perintah satu per satu lewat CMD Windows:
+Jika Anda ingin menjalankan secara manual via CMD Windows:
 
 1. Tekan tombol `Windows + R` di keyboard, ketik **`cmd`**, lalu tekan **Enter**.
-2. Masuk ke folder project dengan mengetik:
+2. Masuk ke folder project, contoh:
    ```cmd
    cd C:\kalenderia.my.id
    ```
-   *(Sesuaikan path folder dengan lokasi tempat Anda menyimpan project)*
-
-3. Buat Virtual Environment Python:
+3. Buat dan aktifkan Virtual Environment Python:
    ```cmd
    python -m venv venv
-   ```
-
-4. Aktifkan Virtual Environment di Windows:
-   ```cmd
    venv\Scripts\activate.bat
    ```
-   *(Akan muncul tanda `(venv)` di sebelah kiri Command Prompt)*
-
-5. Install seluruh dependensi pustaka:
+   *(Akan muncul penanda `(venv)` di sebelah kiri prompt CMD)*
+4. Install library yang dibutuhkan:
    ```cmd
    pip install -r requirements.txt
    ```
-
-6. Inisialisasi Database & Generate Gambar Sampel:
+5. Siapkan database & gambar sampel:
    ```cmd
    python init_db.py
    python generate_real_png.py
    ```
-
-7. Jalankan Server Web:
+6. Jalankan server web:
    ```cmd
    python app.py
    ```
-
-8. Buka browser favorit Anda di alamat: **`http://localhost:5005`**.
+7. Buka browser Anda di **`http://localhost:5005`**.
 
 ---
 
-### ❓ Troubleshooting FAQ (Kendala Umum di Windows)
+### ❓ Pertanyaan & Pertolongan Pertama (FAQ Kendala Windows)
 
-* **T: Muncul pesan error `'python' is not recognized as an internal or external command`**
-  * **Solusi**: Anda belum mencentang opsi *"Add python.exe to PATH"* saat install Python. Uninstall Python Anda, lalu install ulang dan pastikan centang opsi tersebut di bagian bawah layar pertama installer.
+* **Tanya: Muncul pesan error `'python' is not recognized as an internal or external command`**
+  * **Jawab**: Ini artinya Anda lupa mencentang *"Add python.exe to PATH"* saat install Python di Langkah 1. Jalankan lagi installer Python Anda, pilih *Modify* / *Reinstall*, dan pastikan centang opsi *Add python.exe to PATH*.
 
-* **T: Muncul error PowerShell Execution Policy saat aktivasi `venv`**
-  * **Solusi**: Gunakan **Command Prompt (CMD)** biasa, bukan PowerShell. Atau jalankan file **`run_windows.bat`** langsung.
+* **Tanya: Bagaimana cara mematikan / menghentikan server jika sudah selesai dipakai?**
+  * **Jawab**: Cukup tutup jendela CMD hitam tersebut, atau tekan kombinasi tombol **`Ctrl + C`** di keyboard saat berada di jendela CMD.
 
-* **T: Bagaimana cara menghentikan server aplikasi?**
-  * **Solusi**: Di jendela CMD yang sedang berjalan, tekan tombol **`Ctrl + C`** di keyboard.
+* **Tanya: Apakah butuh koneksi internet saat menjalankan website di komputer lokal?**
+  * **Jawab**: Tidak butuh! Setelah langkah instalasi selesai, aplikasi web Kalenderia dapat dijalankan 100% secara offline di PC/laptop Windows Anda.
 
 ---
 
